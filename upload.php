@@ -17,6 +17,7 @@ $allowedOrigins = [
     'https://www.akinteriors.design',
     'https://akinterious.in',
     'https://www.akinterious.in',
+    'http://uploads.akinteriors.design',
     'https://uploads.akinteriors.design',
     'http://localhost:3000',
 ];
