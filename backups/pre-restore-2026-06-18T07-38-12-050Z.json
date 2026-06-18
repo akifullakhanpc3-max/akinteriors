@@ -1,0 +1,402 @@
+{
+  "version": "1.0",
+  "exportDate": "2026-06-18T07:38:12.050Z",
+  "stats": {
+    "totalRecords": 8,
+    "collections": {
+      "User": 1,
+      "Project": 0,
+      "Service": 0,
+      "Testimonial": 0,
+      "TeamMember": 0,
+      "FAQ": 0,
+      "Inquiry": 0,
+      "Settings": 0,
+      "Blog": 0,
+      "WebsiteImage": 0,
+      "AboutPage": 0,
+      "ContactPage": 1,
+      "FooterSettings": 1,
+      "Homepage": 0,
+      "Navigation": 1,
+      "SEOSettings": 2,
+      "SocialLinks": 1,
+      "Branding": 1
+    }
+  },
+  "data": {
+    "User": [
+      {
+        "_id": "6a33a03a158cd9c13191e9df",
+        "name": "AkInteriors",
+        "email": "admin@gmail.com",
+        "password": "$2b$12$HIQrC9TJi1wu3KoLPSW8I.ARKTe0E3r6oJEn2AUvgDyAPg3BpzSx6",
+        "role": "admin",
+        "isActive": true,
+        "createdAt": "2026-06-18T07:37:30.058Z",
+        "updatedAt": "2026-06-18T07:37:30.058Z"
+      }
+    ],
+    "Project": [],
+    "Service": [],
+    "Testimonial": [],
+    "TeamMember": [],
+    "FAQ": [],
+    "Inquiry": [],
+    "Settings": [],
+    "Blog": [],
+    "WebsiteImage": [],
+    "AboutPage": [],
+    "ContactPage": [
+      {
+        "_id": "6a339ff3158cd9c13191e9de",
+        "heading": "Get In Touch",
+        "subtitle": "Let's create something beautiful together",
+        "formEnabled": true,
+        "mapEnabled": true,
+        "branches": [
+          {
+            "name": "Bangalore Office",
+            "phone": "+91 99999 99999",
+            "whatsapp": "919999999999",
+            "email": "info@akinteriors.com",
+            "address": "123 Design Street",
+            "city": "Bangalore",
+            "state": "Karnataka",
+            "zip": "560001",
+            "workingHours": "Mon-Sat: 10:00 AM - 7:00 PM",
+            "mapEmbed": "",
+            "lat": 12.9716,
+            "lng": 77.5946,
+            "isPrimary": true
+          }
+        ],
+        "createdAt": "2026-06-18T07:36:19.682Z",
+        "updatedAt": "2026-06-18T07:36:19.682Z"
+      }
+    ],
+    "FooterSettings": [
+      {
+        "_id": "6a339ff2158cd9c13191e9dc",
+        "description": "Transforming spaces into timeless experiences. We create luxury interiors that reflect your personality and elevate your lifestyle.",
+        "newsletterTitle": "Subscribe to our newsletter",
+        "copyright": "AkInteriors. All rights reserved.",
+        "showNewsletter": true,
+        "backgroundColor": "#111827",
+        "textColor": "#ffffff",
+        "quickLinks": [
+          {
+            "label": "Home",
+            "href": "/"
+          },
+          {
+            "label": "About Us",
+            "href": "/about"
+          },
+          {
+            "label": "Projects",
+            "href": "/projects"
+          },
+          {
+            "label": "Blog",
+            "href": "/blog"
+          },
+          {
+            "label": "Contact",
+            "href": "/contact"
+          },
+          {
+            "label": "FAQ",
+            "href": "/#faq"
+          }
+        ],
+        "serviceLinks": [
+          {
+            "label": "Residential Interiors",
+            "href": "/services"
+          },
+          {
+            "label": "Commercial Interiors",
+            "href": "/services"
+          },
+          {
+            "label": "Modular Kitchens",
+            "href": "/services"
+          },
+          {
+            "label": "Living Room Design",
+            "href": "/services"
+          },
+          {
+            "label": "Office Design",
+            "href": "/services"
+          },
+          {
+            "label": "Renovation Services",
+            "href": "/services"
+          }
+        ],
+        "createdAt": "2026-06-18T07:36:18.207Z",
+        "updatedAt": "2026-06-18T07:36:18.207Z"
+      }
+    ],
+    "Homepage": [],
+    "Navigation": [
+      {
+        "_id": "6a339fef158cd9c13191e9d9",
+        "ctaText": "Get Free Quote",
+        "ctaLink": "/contact",
+        "sticky": true,
+        "links": [
+          {
+            "label": "Home",
+            "href": "/",
+            "order": 0
+          },
+          {
+            "label": "Projects",
+            "href": "/projects",
+            "order": 1
+          },
+          {
+            "label": "Services",
+            "href": "/services",
+            "order": 2
+          },
+          {
+            "label": "About",
+            "href": "/about",
+            "order": 3
+          },
+          {
+            "label": "Blog",
+            "href": "/blog",
+            "order": 4
+          },
+          {
+            "label": "Contact",
+            "href": "/contact",
+            "order": 5
+          }
+        ],
+        "createdAt": "2026-06-18T07:36:15.263Z",
+        "updatedAt": "2026-06-18T07:36:15.263Z"
+      }
+    ],
+    "SEOSettings": [
+      {
+        "_id": "6a339fee158cd9c13191e9d8",
+        "pages": [
+          {
+            "page": "home",
+            "metaTitle": "",
+            "metaDescription": "",
+            "keywords": [],
+            "canonicalUrl": "",
+            "ogImage": "",
+            "twitterCard": "summary_large_image"
+          },
+          {
+            "page": "about",
+            "metaTitle": "",
+            "metaDescription": "",
+            "keywords": [],
+            "canonicalUrl": "",
+            "ogImage": "",
+            "twitterCard": "summary_large_image"
+          },
+          {
+            "page": "services",
+            "metaTitle": "",
+            "metaDescription": "",
+            "keywords": [],
+            "canonicalUrl": "",
+            "ogImage": "",
+            "twitterCard": "summary_large_image"
+          },
+          {
+            "page": "projects",
+            "metaTitle": "",
+            "metaDescription": "",
+            "keywords": [],
+            "canonicalUrl": "",
+            "ogImage": "",
+            "twitterCard": "summary_large_image"
+          },
+          {
+            "page": "contact",
+            "metaTitle": "",
+            "metaDescription": "",
+            "keywords": [],
+            "canonicalUrl": "",
+            "ogImage": "",
+            "twitterCard": "summary_large_image"
+          },
+          {
+            "page": "blog",
+            "metaTitle": "",
+            "metaDescription": "",
+            "keywords": [],
+            "canonicalUrl": "",
+            "ogImage": "",
+            "twitterCard": "summary_large_image"
+          }
+        ],
+        "createdAt": "2026-06-18T07:36:15.182Z",
+        "updatedAt": "2026-06-18T07:36:15.182Z"
+      },
+      {
+        "_id": "6a339fef158cd9c13191e9da",
+        "pages": [
+          {
+            "page": "home",
+            "metaTitle": "",
+            "metaDescription": "",
+            "keywords": [],
+            "canonicalUrl": "",
+            "ogImage": "",
+            "twitterCard": "summary_large_image"
+          },
+          {
+            "page": "about",
+            "metaTitle": "",
+            "metaDescription": "",
+            "keywords": [],
+            "canonicalUrl": "",
+            "ogImage": "",
+            "twitterCard": "summary_large_image"
+          },
+          {
+            "page": "services",
+            "metaTitle": "",
+            "metaDescription": "",
+            "keywords": [],
+            "canonicalUrl": "",
+            "ogImage": "",
+            "twitterCard": "summary_large_image"
+          },
+          {
+            "page": "projects",
+            "metaTitle": "",
+            "metaDescription": "",
+            "keywords": [],
+            "canonicalUrl": "",
+            "ogImage": "",
+            "twitterCard": "summary_large_image"
+          },
+          {
+            "page": "contact",
+            "metaTitle": "",
+            "metaDescription": "",
+            "keywords": [],
+            "canonicalUrl": "",
+            "ogImage": "",
+            "twitterCard": "summary_large_image"
+          },
+          {
+            "page": "blog",
+            "metaTitle": "",
+            "metaDescription": "",
+            "keywords": [],
+            "canonicalUrl": "",
+            "ogImage": "",
+            "twitterCard": "summary_large_image"
+          }
+        ],
+        "createdAt": "2026-06-18T07:36:15.485Z",
+        "updatedAt": "2026-06-18T07:36:15.485Z"
+      }
+    ],
+    "SocialLinks": [
+      {
+        "_id": "6a339ff2158cd9c13191e9dd",
+        "links": [
+          {
+            "platform": "Facebook",
+            "url": "",
+            "icon": "Facebook",
+            "enabled": true,
+            "openNewTab": true,
+            "order": 0
+          },
+          {
+            "platform": "Instagram",
+            "url": "",
+            "icon": "Instagram",
+            "enabled": true,
+            "openNewTab": true,
+            "order": 1
+          },
+          {
+            "platform": "LinkedIn",
+            "url": "",
+            "icon": "Linkedin",
+            "enabled": true,
+            "openNewTab": true,
+            "order": 2
+          },
+          {
+            "platform": "YouTube",
+            "url": "",
+            "icon": "Youtube",
+            "enabled": true,
+            "openNewTab": true,
+            "order": 3
+          },
+          {
+            "platform": "Pinterest",
+            "url": "",
+            "icon": "Pinterest",
+            "enabled": true,
+            "openNewTab": true,
+            "order": 4
+          },
+          {
+            "platform": "Twitter",
+            "url": "",
+            "icon": "Twitter",
+            "enabled": true,
+            "openNewTab": true,
+            "order": 5
+          },
+          {
+            "platform": "Threads",
+            "url": "",
+            "icon": "MessageCircle",
+            "enabled": true,
+            "openNewTab": true,
+            "order": 6
+          },
+          {
+            "platform": "Behance",
+            "url": "",
+            "icon": "Briefcase",
+            "enabled": true,
+            "openNewTab": true,
+            "order": 7
+          },
+          {
+            "platform": "Houzz",
+            "url": "",
+            "icon": "Home",
+            "enabled": true,
+            "openNewTab": true,
+            "order": 8
+          }
+        ],
+        "createdAt": "2026-06-18T07:36:18.955Z",
+        "updatedAt": "2026-06-18T07:36:18.955Z"
+      }
+    ],
+    "Branding": [
+      {
+        "_id": "6a339ff0158cd9c13191e9db",
+        "siteName": "AkInteriors",
+        "primaryColor": "#C8A97E",
+        "secondaryColor": "#111827",
+        "createdAt": "2026-06-18T07:36:16.756Z",
+        "updatedAt": "2026-06-18T07:36:16.756Z"
+      }
+    ]
+  }
+}

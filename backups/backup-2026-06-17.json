@@ -1,0 +1,1437 @@
+{
+  "version": "1.0",
+  "exportDate": "2026-06-17T18:48:01.225Z",
+  "stats": {
+    "totalRecords": 43,
+    "collections": {
+      "User": 1,
+      "Project": 3,
+      "Service": 5,
+      "Testimonial": 3,
+      "TeamMember": 3,
+      "FAQ": 6,
+      "Inquiry": 1,
+      "Settings": 1,
+      "Blog": 0,
+      "WebsiteImage": 12,
+      "AboutPage": 1,
+      "ContactPage": 1,
+      "FooterSettings": 1,
+      "Homepage": 1,
+      "Navigation": 1,
+      "SEOSettings": 1,
+      "SocialLinks": 1,
+      "Branding": 1
+    }
+  },
+  "data": {
+    "User": [
+      {
+        "_id": "6a32e62eded6a6741ad5f3e0",
+        "name": "Admin",
+        "email": "admin@gmail.com",
+        "role": "admin",
+        "isActive": true,
+        "createdAt": "2026-06-17T18:23:42.411Z",
+        "updatedAt": "2026-06-17T18:23:42.411Z"
+      }
+    ],
+    "Project": [
+      {
+        "_id": "6a2ce4e7ce9651301af8d7d4",
+        "title": "Modern Villa",
+        "slug": "modern-villa",
+        "description": "A contemporary villa design.",
+        "categories": [
+          "Residential"
+        ],
+        "location": "Bangalore",
+        "coverImage": "/uploads/projects/1781336538545-Screenshot2026-05-16180709.webp",
+        "featured": true,
+        "status": "published",
+        "images": [],
+        "tags": [],
+        "createdAt": "2026-06-13T05:04:39.263Z",
+        "updatedAt": "2026-06-13T07:42:19.692Z",
+        "area": "",
+        "clientName": "",
+        "content": "",
+        "duration": ""
+      },
+      {
+        "_id": "6a2ce4e7ce9651301af8d7d5",
+        "title": "Corporate Office",
+        "slug": "corporate-office",
+        "description": "Modern office interiors.",
+        "categories": [
+          "Office"
+        ],
+        "location": "Mumbai",
+        "coverImage": "https://images.unsplash.com/photo-1497366216548-37526070297c?w=500&q=60",
+        "featured": true,
+        "status": "published",
+        "images": [],
+        "tags": [],
+        "createdAt": "2026-06-13T05:04:39.263Z",
+        "updatedAt": "2026-06-13T05:04:39.263Z"
+      },
+      {
+        "_id": "6a2ce4e7ce9651301af8d7d6",
+        "title": "Luxury Kitchen",
+        "slug": "luxury-kitchen",
+        "description": "Premium modular kitchen.",
+        "categories": [
+          "Kitchen"
+        ],
+        "location": "Delhi",
+        "coverImage": "https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=500&q=60",
+        "featured": true,
+        "status": "published",
+        "images": [],
+        "tags": [],
+        "createdAt": "2026-06-13T05:04:39.263Z",
+        "updatedAt": "2026-06-13T05:04:39.263Z"
+      }
+    ],
+    "Service": [
+      {
+        "_id": "6a2ce4e7ce9651301af8d7d1",
+        "title": "Residential Design",
+        "description": "Beautiful homes tailored to your lifestyle.",
+        "icon": "Home",
+        "displayOrder": 1,
+        "isActive": true,
+        "createdAt": "2026-06-13T05:04:39.246Z",
+        "updatedAt": "2026-06-13T05:50:26.513Z",
+        "content": ""
+      },
+      {
+        "_id": "6a2ce4e7ce9651301af8d7d2",
+        "title": "Commercial Design",
+        "description": "Productive workspaces that inspire.",
+        "icon": "Building2",
+        "displayOrder": 2,
+        "isActive": true,
+        "createdAt": "2026-06-13T05:04:39.246Z",
+        "updatedAt": "2026-06-13T05:04:39.246Z"
+      },
+      {
+        "_id": "6a2ce4e7ce9651301af8d7d3",
+        "title": "Modular Kitchen",
+        "description": "Smart and stylish kitchen solutions.",
+        "icon": "CookingPot",
+        "displayOrder": 3,
+        "isActive": true,
+        "createdAt": "2026-06-13T05:04:39.246Z",
+        "updatedAt": "2026-06-13T05:04:39.246Z"
+      },
+      {
+        "_id": "6a2cee01f3710656686c7af7",
+        "title": "normal kichen",
+        "description": "assa",
+        "content": "as",
+        "icon": "Globe",
+        "displayOrder": 16,
+        "isActive": true,
+        "createdAt": "2026-06-13T05:43:29.286Z",
+        "updatedAt": "2026-06-13T05:43:29.286Z"
+      },
+      {
+        "_id": "6a2d07a91857c2aeb32aeec3",
+        "title": "asd",
+        "description": "asd",
+        "content": "asd",
+        "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSeg9CsozjfS47omHUmV_3URe82xHodqJAr6g&s",
+        "icon": "Globe",
+        "displayOrder": 0,
+        "isActive": true,
+        "createdAt": "2026-06-13T07:32:57.072Z",
+        "updatedAt": "2026-06-13T07:36:09.420Z"
+      }
+    ],
+    "Testimonial": [
+      {
+        "_id": "6a2ce4e7ce9651301af8d7d7",
+        "clientName": "Priya Sharma",
+        "clientTitle": "Homeowner",
+        "content": "Amazing work! Our home looks stunning.",
+        "rating": 5,
+        "isActive": true,
+        "displayOrder": 1,
+        "createdAt": "2026-06-13T05:04:39.280Z",
+        "updatedAt": "2026-06-13T05:04:39.280Z"
+      },
+      {
+        "_id": "6a2ce4e7ce9651301af8d7d8",
+        "clientName": "Rajesh Mehta",
+        "clientTitle": "Villa Owner",
+        "content": "Professional team with great attention to detail.",
+        "rating": 5,
+        "isActive": true,
+        "displayOrder": 2,
+        "createdAt": "2026-06-13T05:04:39.280Z",
+        "updatedAt": "2026-06-13T05:04:39.280Z"
+      },
+      {
+        "_id": "6a2ce4e7ce9651301af8d7d9",
+        "clientName": "Anita Patel",
+        "clientTitle": "Business Owner",
+        "content": "Our office space is now more productive and beautiful.",
+        "rating": 5,
+        "isActive": true,
+        "displayOrder": 3,
+        "createdAt": "2026-06-13T05:04:39.280Z",
+        "updatedAt": "2026-06-13T05:04:39.280Z"
+      }
+    ],
+    "TeamMember": [
+      {
+        "_id": "6a2ce4e7ce9651301af8d7da",
+        "name": "Arjun Kapoor",
+        "role": "Principal Designer",
+        "bio": "20+ years of experience in luxury interiors.",
+        "avatar": "https://images.unsplash.com/photo-1560250097-0b93528c311a?w=350&q=60",
+        "isActive": true,
+        "displayOrder": 1,
+        "createdAt": "2026-06-13T05:04:39.290Z",
+        "updatedAt": "2026-06-13T05:04:39.290Z"
+      },
+      {
+        "_id": "6a2ce4e7ce9651301af8d7db",
+        "name": "Meera Reddy",
+        "role": "Senior Designer",
+        "bio": "Award-winning residential designer.",
+        "avatar": "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=350&q=60",
+        "isActive": true,
+        "displayOrder": 2,
+        "createdAt": "2026-06-13T05:04:39.290Z",
+        "updatedAt": "2026-06-13T05:04:39.290Z"
+      },
+      {
+        "_id": "6a2ce4e7ce9651301af8d7dc",
+        "name": "Rahul Verma",
+        "role": "Project Manager",
+        "bio": "Delivers projects on time and budget.",
+        "avatar": "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=350&q=60",
+        "isActive": true,
+        "displayOrder": 3,
+        "createdAt": "2026-06-13T05:04:39.290Z",
+        "updatedAt": "2026-06-13T05:04:39.290Z"
+      }
+    ],
+    "FAQ": [
+      {
+        "_id": "6a2cecc0f3710656686c7af1",
+        "question": "What is the typical timeline for an interior design project?",
+        "answer": "The timeline varies based on scope. A single room takes 4-6 weeks, while a full home or office project can take 2-4 months. We provide a detailed timeline during consultation.",
+        "order": 1,
+        "isActive": true,
+        "createdAt": "2026-06-13T05:38:08.855Z",
+        "updatedAt": "2026-06-13T05:38:08.855Z"
+      },
+      {
+        "_id": "6a2cecc0f3710656686c7af2",
+        "question": "How much do interior design services cost?",
+        "answer": "Our pricing is transparent and customized to your needs. We offer different packages from basic consultation to full turnkey solutions. Contact us for a detailed quote.",
+        "order": 2,
+        "isActive": true,
+        "createdAt": "2026-06-13T05:38:08.857Z",
+        "updatedAt": "2026-06-13T05:38:08.857Z"
+      },
+      {
+        "_id": "6a2cecc0f3710656686c7af3",
+        "question": "Do you offer 3D visualization before starting the project?",
+        "answer": "Yes! We provide photorealistic 3D renders of your space before any work begins. This allows you to see and approve the design before execution.",
+        "order": 3,
+        "isActive": true,
+        "createdAt": "2026-06-13T05:38:08.857Z",
+        "updatedAt": "2026-06-13T05:38:08.857Z"
+      },
+      {
+        "_id": "6a2cecc0f3710656686c7af4",
+        "question": "What areas do you serve?",
+        "answer": "We are based in Bangalore and serve major cities across India including Mumbai, Delhi, Pune, Hyderabad, and Chennai. For premium projects, we offer pan-India services.",
+        "order": 4,
+        "isActive": true,
+        "createdAt": "2026-06-13T05:38:08.858Z",
+        "updatedAt": "2026-06-13T05:38:08.858Z"
+      },
+      {
+        "_id": "6a2cecc0f3710656686c7af5",
+        "question": "Do you handle both residential and commercial projects?",
+        "answer": "Absolutely. We specialize in both residential interiors (homes, villas, apartments) and commercial spaces (offices, retail, restaurants, hotels).",
+        "order": 5,
+        "isActive": true,
+        "createdAt": "2026-06-13T05:38:08.858Z",
+        "updatedAt": "2026-06-13T05:38:08.858Z"
+      },
+      {
+        "_id": "6a2cecc0f3710656686c7af6",
+        "question": "What is your design process?",
+        "answer": "Our process includes 5 steps: Consultation, Planning, Design, Execution, and Handover. We involve you at every stage to ensure the final result matches your vision.",
+        "order": 6,
+        "isActive": true,
+        "createdAt": "2026-06-13T05:38:08.858Z",
+        "updatedAt": "2026-06-13T05:38:08.858Z"
+      }
+    ],
+    "Inquiry": [
+      {
+        "_id": "6a2c77c466d44b842c7ac5fb",
+        "name": "sdf",
+        "email": "akifullakhanpc@gmail.com",
+        "phone": "sdf",
+        "service": "kitchen",
+        "budget": "50+",
+        "message": "sdfs",
+        "status": "unread",
+        "createdAt": "2026-06-12T21:19:00.567Z",
+        "updatedAt": "2026-06-12T21:19:00.567Z"
+      }
+    ],
+    "Settings": [
+      {
+        "_id": "6a2c4afed6f7a8fdaf3ba989",
+        "siteName": "AkInteriors",
+        "siteDescription": "Premium Interior Design Services",
+        "logo": "",
+        "favicon": "",
+        "contact": {
+          "email": "info@akinteriors.com",
+          "phone": "+91 7676606200",
+          "address": "123 Design Street",
+          "city": "Bangalore",
+          "state": "Karnataka",
+          "zip": "560001",
+          "country": "IN"
+        },
+        "seo": {
+          "metaTitle": "AkInteriors | Luxury Interior Design Agency",
+          "metaDescription": "Transforming spaces into timeless experiences. Premium interior design solutions for residential and commercial spaces.",
+          "keywords": []
+        },
+        "aboutText": "",
+        "missionStatement": "",
+        "workingHours": "Mon-Sat: 10:00 AM - 7:00 PM",
+        "googleMapsApiKey": "",
+        "analyticsId": "",
+        "whatsapp": {
+          "number": "919999999999",
+          "message": "Hi! I would like to know more about your services."
+        },
+        "maintenanceMode": false,
+        "hero": {
+          "slides": [
+            {
+              "image": "https://images.unsplash.com/photo-1618220179428-22790b461013?w=1200&q=60",
+              "imageLg": "https://images.unsplash.com/photo-1618220179428-22790b461013?w=1920&q=60",
+              "headline": "Transforming Spaces Into Timeless Experiences",
+              "subheadline": "Luxury Interior Design Solutions For Modern Living",
+              "ctaText": "",
+              "ctaLink": ""
+            },
+            {
+              "image": "https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?w=1200&q=60",
+              "imageLg": "https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?w=1920&q=60",
+              "headline": "Elegance Redefined For Your Home",
+              "subheadline": "Bespoke Interior Design Tailored To Your Lifestyle",
+              "ctaText": "",
+              "ctaLink": ""
+            },
+            {
+              "image": "https://images.unsplash.com/photo-1616137466211-f939a420be84?w=1200&q=60",
+              "imageLg": "https://images.unsplash.com/photo-1616137466211-f939a420be84?w=1920&q=60",
+              "headline": "Where Vision Meets Perfection",
+              "subheadline": "Creating Extraordinary Spaces That Inspire",
+              "ctaText": "",
+              "ctaLink": ""
+            }
+          ],
+          "stats": [
+            {
+              "value": 500,
+              "suffix": "+",
+              "label": "Projects"
+            },
+            {
+              "value": 300,
+              "suffix": "+",
+              "label": "Clients"
+            },
+            {
+              "value": 15,
+              "suffix": "+",
+              "label": "Years"
+            }
+          ]
+        },
+        "aboutSection": {
+          "heading": "Crafting Dreams Into Reality",
+          "paragraphs": [
+            "At AkInteriors, we believe every space has a story to tell. With over 15 years of experience in luxury interior design, we have transformed hundreds of spaces across India into breathtaking environments that blend aesthetics with functionality.",
+            "Our team of award-winning designers brings together global design trends with local craftsmanship, creating interiors that are both timeless and contemporary. From intimate home makeovers to large-scale commercial projects, we deliver excellence in every detail."
+          ],
+          "image": "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=700&q=60",
+          "highlights": [
+            {
+              "icon": "Award",
+              "label": "Award Winning",
+              "description": "Recognized for design excellence"
+            },
+            {
+              "icon": "Target",
+              "label": "Our Mission",
+              "description": "To create inspiring spaces that enhance lives through innovative design"
+            },
+            {
+              "icon": "Eye",
+              "label": "Our Vision",
+              "description": "To be the most trusted luxury interior design brand in India"
+            },
+            {
+              "icon": "Users",
+              "label": "Expert Team",
+              "description": "25+ skilled designers and craftsmen"
+            }
+          ],
+          "yearsExperience": 15,
+          "projectsDelivered": 500
+        },
+        "whyChooseUs": [
+          {
+            "icon": "Star",
+            "title": "Expert Designers",
+            "description": "Our team of award-winning designers brings years of experience and creativity to every project."
+          },
+          {
+            "icon": "Gem",
+            "title": "Premium Materials",
+            "description": "We source only the finest materials from around the world for lasting quality."
+          },
+          {
+            "icon": "Eye",
+            "title": "Transparent Pricing",
+            "description": "No hidden costs. Clear, detailed quotations for every project."
+          },
+          {
+            "icon": "Clock",
+            "title": "On-Time Delivery",
+            "description": "We respect your time and deliver projects within the promised timeline."
+          },
+          {
+            "icon": "Monitor",
+            "title": "3D Visualization",
+            "description": "See your space before we build it with photorealistic 3D renders."
+          },
+          {
+            "icon": "CheckCircle2",
+            "title": "End-to-End Execution",
+            "description": "From concept to completion, we handle everything with precision."
+          }
+        ],
+        "stats": [
+          {
+            "value": 500,
+            "suffix": "+",
+            "label": "Projects Completed"
+          },
+          {
+            "value": 300,
+            "suffix": "+",
+            "label": "Happy Clients"
+          },
+          {
+            "value": 15,
+            "suffix": "+",
+            "label": "Years Experience"
+          },
+          {
+            "value": 25,
+            "suffix": "+",
+            "label": "Design Experts"
+          }
+        ],
+        "processSteps": [
+          {
+            "step": 1,
+            "title": "Consultation",
+            "description": "We begin with a detailed consultation to understand your vision, needs, and budget."
+          },
+          {
+            "step": 2,
+            "title": "Planning",
+            "description": "Our team creates a comprehensive plan including layouts, material selection, and timelines."
+          },
+          {
+            "step": 3,
+            "title": "Design",
+            "description": "We present photorealistic 3D designs and refine them based on your feedback."
+          },
+          {
+            "step": 4,
+            "title": "Execution",
+            "description": "Our skilled craftsmen bring the design to life with precision and attention to detail."
+          },
+          {
+            "step": 5,
+            "title": "Handover",
+            "description": "We deliver your dream space with a final walkthrough and post-completion support."
+          }
+        ],
+        "footer": {
+          "description": "Transforming spaces into timeless experiences. We create luxury interiors that reflect your personality and elevate your lifestyle.",
+          "quickLinks": [
+            {
+              "label": "Home",
+              "href": "/"
+            },
+            {
+              "label": "About Us",
+              "href": "/about"
+            },
+            {
+              "label": "Projects",
+              "href": "/projects"
+            },
+            {
+              "label": "Blog",
+              "href": "/blog"
+            },
+            {
+              "label": "Contact",
+              "href": "/contact"
+            },
+            {
+              "label": "FAQ",
+              "href": "/#faq"
+            }
+          ],
+          "serviceLinks": [
+            {
+              "label": "Residential Interiors",
+              "href": "/services"
+            },
+            {
+              "label": "Commercial Interiors",
+              "href": "/services"
+            },
+            {
+              "label": "Modular Kitchens",
+              "href": "/services"
+            },
+            {
+              "label": "Living Room Design",
+              "href": "/services"
+            },
+            {
+              "label": "Office Design",
+              "href": "/services"
+            },
+            {
+              "label": "Renovation Services",
+              "href": "/services"
+            }
+          ],
+          "socialLinks": [
+            {
+              "platform": "Facebook",
+              "url": "#",
+              "icon": "Globe"
+            },
+            {
+              "platform": "Instagram",
+              "url": "#",
+              "icon": "Camera"
+            },
+            {
+              "platform": "LinkedIn",
+              "url": "#",
+              "icon": "Briefcase"
+            },
+            {
+              "platform": "YouTube",
+              "url": "#",
+              "icon": "Play"
+            }
+          ],
+          "newsletterTitle": "Subscribe to our newsletter",
+          "copyright": "AkInteriors. All rights reserved."
+        },
+        "nav": {
+          "links": [
+            {
+              "label": "Home",
+              "href": "/"
+            },
+            {
+              "label": "Projects",
+              "href": "/projects"
+            },
+            {
+              "label": "Services",
+              "href": "/services"
+            },
+            {
+              "label": "About",
+              "href": "/about"
+            },
+            {
+              "label": "Blog",
+              "href": "/blog"
+            },
+            {
+              "label": "Contact",
+              "href": "/contact"
+            }
+          ],
+          "ctaText": "Get Free Quote",
+          "ctaLink": "/contact"
+        },
+        "createdAt": "2026-06-12T18:07:58.367Z",
+        "updatedAt": "2026-06-12T19:35:47.691Z",
+        "socialLinks": {
+          "facebook": "",
+          "instagram": "",
+          "linkedin": "",
+          "youtube": ""
+        }
+      }
+    ],
+    "Blog": [],
+    "WebsiteImage": [
+      {
+        "_id": "6a2c6bfd444f7d5b11699ec8",
+        "title": "Use this one for white background",
+        "category": "branding",
+        "section": "logo",
+        "altText": "",
+        "imageUrl": "/uploads/branding/1781296123387-Usethisoneforwhitebackground.webp",
+        "thumbnailUrl": "/uploads/branding/thumb-1781296123387-Usethisoneforwhitebackground.webp",
+        "imageType": "webp",
+        "fileSize": 39976,
+        "dimensions": {
+          "width": 3101,
+          "height": 3661
+        },
+        "displayOrder": 0,
+        "isActive": true,
+        "isBranding": true,
+        "uploadedBy": "admin@akinteriors.com",
+        "createdAt": "2026-06-12T20:28:45.705Z",
+        "updatedAt": "2026-06-12T20:28:45.705Z",
+        "slug": "use-this-one-for-white-background"
+      },
+      {
+        "_id": "6a2c6cb9444f7d5b11699ec9",
+        "title": "Use this one for black background",
+        "category": "branding",
+        "section": "mobileLogo",
+        "altText": "",
+        "imageUrl": "/uploads/branding/1781296310101-Usethisoneforblackbackground.webp",
+        "thumbnailUrl": "/uploads/branding/thumb-1781296310101-Usethisoneforblackbackground.webp",
+        "imageType": "webp",
+        "fileSize": 41944,
+        "dimensions": {
+          "width": 3102,
+          "height": 3661
+        },
+        "displayOrder": 0,
+        "isActive": true,
+        "isBranding": true,
+        "uploadedBy": "admin@akinteriors.com",
+        "createdAt": "2026-06-12T20:31:53.954Z",
+        "updatedAt": "2026-06-12T20:31:53.954Z",
+        "slug": "use-this-one-for-black-background"
+      },
+      {
+        "_id": "6a2c6cbf444f7d5b11699eca",
+        "title": "Use this one for black background",
+        "category": "branding",
+        "section": "footerLogo",
+        "altText": "",
+        "imageUrl": "/uploads/branding/1781296315787-Usethisoneforblackbackground.webp",
+        "thumbnailUrl": "/uploads/branding/thumb-1781296315787-Usethisoneforblackbackground.webp",
+        "imageType": "webp",
+        "fileSize": 41944,
+        "dimensions": {
+          "width": 3102,
+          "height": 3661
+        },
+        "displayOrder": 0,
+        "isActive": true,
+        "isBranding": true,
+        "uploadedBy": "admin@akinteriors.com",
+        "createdAt": "2026-06-12T20:31:59.140Z",
+        "updatedAt": "2026-06-12T20:31:59.140Z",
+        "slug": "use-this-one-for-black-background"
+      },
+      {
+        "_id": "6a2c6cc7444f7d5b11699ecb",
+        "title": "Use this one for white background",
+        "category": "branding",
+        "section": "lightLogo",
+        "altText": "",
+        "imageUrl": "/uploads/branding/1781296325723-Usethisoneforwhitebackground.webp",
+        "thumbnailUrl": "/uploads/branding/thumb-1781296325723-Usethisoneforwhitebackground.webp",
+        "imageType": "webp",
+        "fileSize": 39976,
+        "dimensions": {
+          "width": 3101,
+          "height": 3661
+        },
+        "displayOrder": 0,
+        "isActive": true,
+        "isBranding": true,
+        "uploadedBy": "admin@akinteriors.com",
+        "createdAt": "2026-06-12T20:32:07.935Z",
+        "updatedAt": "2026-06-12T20:32:07.935Z",
+        "slug": "use-this-one-for-white-background"
+      },
+      {
+        "_id": "6a2c6ccc444f7d5b11699ecc",
+        "title": "Use this one for black background",
+        "category": "branding",
+        "section": "darkLogo",
+        "altText": "",
+        "imageUrl": "/uploads/branding/1781296330160-Usethisoneforblackbackground.webp",
+        "thumbnailUrl": "/uploads/branding/thumb-1781296330160-Usethisoneforblackbackground.webp",
+        "imageType": "webp",
+        "fileSize": 41944,
+        "dimensions": {
+          "width": 3102,
+          "height": 3661
+        },
+        "displayOrder": 0,
+        "isActive": true,
+        "isBranding": true,
+        "uploadedBy": "admin@akinteriors.com",
+        "createdAt": "2026-06-12T20:32:12.317Z",
+        "updatedAt": "2026-06-12T20:32:12.317Z",
+        "slug": "use-this-one-for-black-background"
+      },
+      {
+        "_id": "6a2c6cd3444f7d5b11699ecd",
+        "title": "Use this one for white background",
+        "category": "branding",
+        "section": "favicon",
+        "altText": "",
+        "imageUrl": "/uploads/branding/1781296337663-Usethisoneforwhitebackground.webp",
+        "thumbnailUrl": "/uploads/branding/thumb-1781296337663-Usethisoneforwhitebackground.webp",
+        "imageType": "webp",
+        "fileSize": 39976,
+        "dimensions": {
+          "width": 3101,
+          "height": 3661
+        },
+        "displayOrder": 0,
+        "isActive": true,
+        "isBranding": true,
+        "uploadedBy": "admin@akinteriors.com",
+        "createdAt": "2026-06-12T20:32:19.702Z",
+        "updatedAt": "2026-06-12T20:32:19.702Z",
+        "slug": "use-this-one-for-white-background"
+      },
+      {
+        "_id": "6a2c76b666d44b842c7ac5f5",
+        "title": "Use this one for black background",
+        "category": "branding",
+        "section": "adminLogo",
+        "altText": "",
+        "imageUrl": "/uploads/branding/1781298868201-Usethisoneforblackbackground.webp",
+        "thumbnailUrl": "/uploads/branding/thumb-1781298868201-Usethisoneforblackbackground.webp",
+        "imageType": "webp",
+        "fileSize": 41944,
+        "dimensions": {
+          "width": 3102,
+          "height": 3661
+        },
+        "displayOrder": 0,
+        "isActive": true,
+        "isBranding": true,
+        "uploadedBy": "admin@akinteriors.com",
+        "createdAt": "2026-06-12T21:14:31.001Z",
+        "updatedAt": "2026-06-12T21:14:31.001Z",
+        "slug": "use-this-one-for-black-background"
+      },
+      {
+        "_id": "6a2c76bd66d44b842c7ac5f6",
+        "title": "Use this one for black background",
+        "category": "branding",
+        "section": "darkLogo",
+        "altText": "",
+        "imageUrl": "/uploads/branding/1781298874903-Usethisoneforblackbackground.webp",
+        "thumbnailUrl": "/uploads/branding/thumb-1781298874903-Usethisoneforblackbackground.webp",
+        "imageType": "webp",
+        "fileSize": 41944,
+        "dimensions": {
+          "width": 3102,
+          "height": 3661
+        },
+        "displayOrder": 0,
+        "isActive": true,
+        "isBranding": true,
+        "uploadedBy": "admin@akinteriors.com",
+        "createdAt": "2026-06-12T21:14:37.392Z",
+        "updatedAt": "2026-06-12T21:14:37.392Z",
+        "slug": "use-this-one-for-black-background"
+      },
+      {
+        "_id": "6a2c76c666d44b842c7ac5f7",
+        "title": "Use this one for white background",
+        "category": "branding",
+        "section": "darkLogo",
+        "altText": "",
+        "imageUrl": "/uploads/branding/1781298884054-Usethisoneforwhitebackground.webp",
+        "thumbnailUrl": "/uploads/branding/thumb-1781298884054-Usethisoneforwhitebackground.webp",
+        "imageType": "webp",
+        "fileSize": 39976,
+        "dimensions": {
+          "width": 3101,
+          "height": 3661
+        },
+        "displayOrder": 0,
+        "isActive": true,
+        "isBranding": true,
+        "uploadedBy": "admin@akinteriors.com",
+        "createdAt": "2026-06-12T21:14:46.480Z",
+        "updatedAt": "2026-06-12T21:14:46.480Z",
+        "slug": "use-this-one-for-white-background"
+      },
+      {
+        "_id": "6a2c76d166d44b842c7ac5f8",
+        "title": "Use this one for white background",
+        "category": "branding",
+        "section": "appIcon",
+        "altText": "",
+        "imageUrl": "/uploads/branding/1781298894601-Usethisoneforwhitebackground.webp",
+        "thumbnailUrl": "/uploads/branding/thumb-1781298894601-Usethisoneforwhitebackground.webp",
+        "imageType": "webp",
+        "fileSize": 39976,
+        "dimensions": {
+          "width": 3101,
+          "height": 3661
+        },
+        "displayOrder": 0,
+        "isActive": true,
+        "isBranding": true,
+        "uploadedBy": "admin@akinteriors.com",
+        "createdAt": "2026-06-12T21:14:57.009Z",
+        "updatedAt": "2026-06-12T21:14:57.009Z",
+        "slug": "use-this-one-for-white-background"
+      },
+      {
+        "_id": "6a2c76db66d44b842c7ac5f9",
+        "title": "Use this one for black background",
+        "category": "branding",
+        "section": "darkLogo",
+        "altText": "",
+        "imageUrl": "/uploads/branding/1781298904940-Usethisoneforblackbackground.webp",
+        "thumbnailUrl": "/uploads/branding/thumb-1781298904940-Usethisoneforblackbackground.webp",
+        "imageType": "webp",
+        "fileSize": 41944,
+        "dimensions": {
+          "width": 3102,
+          "height": 3661
+        },
+        "displayOrder": 0,
+        "isActive": true,
+        "isBranding": true,
+        "uploadedBy": "admin@akinteriors.com",
+        "createdAt": "2026-06-12T21:15:07.300Z",
+        "updatedAt": "2026-06-12T21:15:07.300Z",
+        "slug": "use-this-one-for-black-background"
+      },
+      {
+        "_id": "6a2d09dbbd1305d75b048503",
+        "title": "Modern Villa-cover",
+        "category": "projects",
+        "section": "project-images",
+        "altText": "Modern Villa-cover",
+        "imageUrl": "/uploads/projects/1781336538545-Screenshot2026-05-16180709.webp",
+        "thumbnailUrl": "/uploads/projects/thumb-1781336538545-Screenshot2026-05-16180709.webp",
+        "imageType": "webp",
+        "fileSize": 24444,
+        "dimensions": {
+          "width": 1898,
+          "height": 870
+        },
+        "displayOrder": 0,
+        "isActive": true,
+        "isBranding": false,
+        "uploadedBy": "admin@akinteriors.com",
+        "createdAt": "2026-06-13T07:42:19.513Z",
+        "updatedAt": "2026-06-13T07:42:19.513Z",
+        "slug": "modern-villa-cover"
+      }
+    ],
+    "AboutPage": [
+      {
+        "_id": "6a2c62ea444f7d5b11699ec2",
+        "heading": "Crafting Dreams Into Reality",
+        "subtitle": "Discover our story",
+        "content": "",
+        "mission": "",
+        "vision": "",
+        "values": [],
+        "image": "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=700&q=60",
+        "layout": "default",
+        "showTimeline": true,
+        "showValues": true,
+        "stats": [
+          {
+            "icon": "Award",
+            "value": "500+",
+            "label": "Projects Completed"
+          },
+          {
+            "icon": "Users",
+            "value": "300+",
+            "label": "Happy Clients"
+          },
+          {
+            "icon": "Clock",
+            "value": "15+",
+            "label": "Years Experience"
+          },
+          {
+            "icon": "Star",
+            "value": "25+",
+            "label": "Design Experts"
+          }
+        ],
+        "achievements": [],
+        "timeline": [
+          {
+            "year": "2009",
+            "event": "AKinteriors founded in Mysore",
+            "description": ""
+          }
+        ],
+        "createdAt": "2026-06-12T19:50:02.074Z",
+        "updatedAt": "2026-06-12T20:17:35.083Z"
+      }
+    ],
+    "ContactPage": [
+      {
+        "_id": "6a2c62ea444f7d5b11699ec3",
+        "heading": "Get In Touch ",
+        "subtitle": "Let's create something beautiful together",
+        "formEnabled": true,
+        "mapEnabled": true,
+        "branches": [
+          {
+            "name": "Mysore Office",
+            "phone": "+91  8088462400",
+            "whatsapp": "91 8088462400",
+            "email": "akinteriors078@gmail.com",
+            "address": "#410-413/40, Hebbal industrial area, Mysuru, 570027",
+            "city": "Mysore",
+            "state": "Karnataka",
+            "zip": "560001",
+            "workingHours": "Mon-Sat: 10:00 AM - 7:00 PM",
+            "mapEmbed": "",
+            "lat": 12.9716,
+            "lng": 77.5946,
+            "isPrimary": true
+          }
+        ],
+        "createdAt": "2026-06-12T19:50:02.214Z",
+        "updatedAt": "2026-06-17T17:51:52.207Z"
+      }
+    ],
+    "FooterSettings": [
+      {
+        "_id": "6a2c62ea444f7d5b11699ec7",
+        "description": "Transforming spaces into timeless experiences. We create luxury interiors that reflect your personality and elevate your lifestyle.",
+        "newsletterTitle": "Subscribe to our newsletter",
+        "copyright": "AkInteriors. All rights reserved.",
+        "showNewsletter": true,
+        "backgroundColor": "#111827",
+        "textColor": "#ffffff",
+        "quickLinks": [
+          {
+            "label": "Home",
+            "href": "/"
+          },
+          {
+            "label": "About Us",
+            "href": "/about"
+          },
+          {
+            "label": "Projects",
+            "href": "/projects"
+          },
+          {
+            "label": "Contact",
+            "href": "/contact"
+          },
+          {
+            "label": "FAQ",
+            "href": "/#faq"
+          }
+        ],
+        "serviceLinks": [
+          {
+            "label": "Residential Interiors",
+            "href": "/services"
+          },
+          {
+            "label": "Commercial Interiors",
+            "href": "/services"
+          },
+          {
+            "label": "Modular Kitchens",
+            "href": "/services"
+          }
+        ],
+        "createdAt": "2026-06-12T19:50:02.710Z",
+        "updatedAt": "2026-06-13T05:38:08.890Z"
+      }
+    ],
+    "Homepage": [
+      {
+        "_id": "6a2c62e9444f7d5b11699ec1",
+        "layout": "full-width",
+        "containerWidth": "max-w-7xl",
+        "sections": [
+          {
+            "id": "hero",
+            "type": "hero",
+            "enabled": true,
+            "order": 0,
+            "heading": "Elegance Redefined For Your Home ",
+            "slides": [
+              {
+                "image": "https://images.unsplash.com/photo-1618220179428-22790b461013?w=1200&q=60",
+                "imageLg": "https://images.unsplash.com/photo-1618220179428-22790b461013?w=1920&q=60",
+                "headline": "Transforming Spaces Into Timeless Experiences",
+                "subheadline": "Luxury Interior Design Solutions For Modern Living"
+              },
+              {
+                "image": "https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?w=1200&q=60",
+                "imageLg": "https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?w=1920&q=60",
+                "headline": "Elegance Redefined For Your Home",
+                "subheadline": "Bespoke Interior Design Tailored To Your Lifestyle"
+              },
+              {
+                "image": "https://images.unsplash.com/photo-1616137466211-f939a420be84?w=1200&q=60",
+                "imageLg": "https://images.unsplash.com/photo-1616137466211-f939a420be84?w=1920&q=60",
+                "headline": "Where Vision Meets Perfection",
+                "subheadline": "Creating Extraordinary Spaces That Inspire"
+              }
+            ],
+            "stats": [
+              {
+                "value": 500,
+                "suffix": "+",
+                "label": "Projects"
+              },
+              {
+                "value": 300,
+                "suffix": "+",
+                "label": "Clients"
+              },
+              {
+                "value": 15,
+                "suffix": "+",
+                "label": "Years"
+              }
+            ],
+            "items": [],
+            "steps": []
+          },
+          {
+            "id": "about",
+            "type": "about",
+            "enabled": true,
+            "order": 1,
+            "heading": "About Us",
+            "content": "At AkInteriors, we believe every space has a story to tell. With over 15 years of experience in luxury interior design, we have transformed hundreds of spaces across India into breathtaking environments that blend aesthetics with functionality.\nOur team of award-winning designers brings together global design trends with local craftsmanship, creating interiors that are both timeless and contemporary. From intimate home makeovers to large-scale commercial projects, we deliver excellence in every detail.",
+            "image": "https://www.nilkamalhomes.com/cdn/shop/articles/Latest_Bedroom_Furniture_Design_to_Modernize_Your_Bedroom_Space_17acb049-8c2f-4020-9fc9-8829d01d2455.jpg?v=1777028478&width=850",
+            "slides": [],
+            "stats": [],
+            "items": [],
+            "steps": []
+          },
+          {
+            "id": "services",
+            "type": "services",
+            "enabled": true,
+            "order": 2,
+            "heading": "Crafting Dreams Into Reality",
+            "subheading": "Comprehensive Design Solutions",
+            "content": "From concept to completion, we offer end-to-end interior design services tailored to your unique style and requirements.",
+            "slides": [],
+            "stats": [],
+            "items": [],
+            "steps": []
+          },
+          {
+            "id": "why-choose-us",
+            "type": "why-choose-us",
+            "enabled": true,
+            "order": 3,
+            "heading": "Why Choose Us",
+            "subheading": "What Sets Us Apart",
+            "content": "We combine creativity with craftsmanship to deliver interiors that exceed expectations.",
+            "slides": [],
+            "stats": [],
+            "items": [
+              {
+                "icon": "Star",
+                "title": "Expert Designers",
+                "description": "Our team of award-winning designers brings years of experience and creativity to every project."
+              },
+              {
+                "icon": "Gem",
+                "title": "Premium Materials",
+                "description": "We source only the finest materials from around the world for lasting quality."
+              },
+              {
+                "icon": "Eye",
+                "title": "Transparent Pricing",
+                "description": "No hidden costs. Clear, detailed quotations for every project."
+              },
+              {
+                "icon": "Clock",
+                "title": "On-Time Delivery",
+                "description": "We respect your time and deliver projects within the promised timeline."
+              },
+              {
+                "icon": "Monitor",
+                "title": "3D Visualization",
+                "description": "See your space before we build it with photorealistic 3D renders."
+              },
+              {
+                "icon": "CheckCircle2",
+                "title": "End-to-End Execution",
+                "description": "From concept to completion, we handle everything with precision."
+              }
+            ],
+            "steps": []
+          },
+          {
+            "id": "stats",
+            "type": "stats",
+            "enabled": true,
+            "order": 4,
+            "heading": "Our Impact",
+            "subheading": "Numbers That Speak",
+            "slides": [],
+            "stats": [],
+            "items": [],
+            "steps": []
+          },
+          {
+            "id": "projects",
+            "type": "projects",
+            "enabled": true,
+            "order": 5,
+            "heading": "Our Portfolio",
+            "subheading": "Featured Projects",
+            "content": "Explore our curated collection of premium interior design projects.",
+            "slides": [],
+            "stats": [],
+            "items": [],
+            "steps": []
+          },
+          {
+            "id": "process",
+            "type": "process",
+            "enabled": true,
+            "order": 6,
+            "heading": "Our Process",
+            "subheading": "How We Work",
+            "content": "A streamlined approach that ensures every project is delivered with excellence.",
+            "slides": [],
+            "stats": [],
+            "items": [],
+            "steps": [
+              {
+                "step": 1,
+                "title": "Consultation",
+                "description": "We begin with a detailed consultation to understand your vision, needs, and budget."
+              },
+              {
+                "step": 2,
+                "title": "Planning",
+                "description": "Our team creates a comprehensive plan including layouts, material selection, and timelines."
+              },
+              {
+                "step": 3,
+                "title": "Design",
+                "description": "We present photorealistic 3D designs and refine them based on your feedback."
+              },
+              {
+                "step": 4,
+                "title": "Execution",
+                "description": "Our skilled craftsmen bring the design to life with precision and attention to detail."
+              },
+              {
+                "step": 5,
+                "title": "Handover",
+                "description": "We deliver your dream space with a final walkthrough and post-completion support."
+              }
+            ]
+          },
+          {
+            "id": "testimonials",
+            "type": "testimonials",
+            "enabled": true,
+            "order": 7,
+            "heading": "Testimonials",
+            "subheading": "What Our Clients Say",
+            "slides": [],
+            "stats": [],
+            "items": [],
+            "steps": []
+          },
+          {
+            "id": "team",
+            "type": "team",
+            "enabled": true,
+            "order": 8,
+            "heading": "Our Team",
+            "subheading": "Meet The Experts",
+            "content": "Talented professionals dedicated to creating extraordinary spaces.",
+            "slides": [],
+            "stats": [],
+            "items": [],
+            "steps": []
+          },
+          {
+            "id": "faq",
+            "type": "faq",
+            "enabled": true,
+            "order": 9,
+            "heading": "FAQ",
+            "subheading": "Frequently Asked Questions",
+            "slides": [],
+            "stats": [],
+            "items": [],
+            "steps": []
+          },
+          {
+            "id": "contact",
+            "type": "contact",
+            "enabled": true,
+            "order": 10,
+            "heading": "Get In Touch",
+            "subheading": "Let's Create Something Beautiful",
+            "content": "Ready to transform your space? Reach out to us for a free consultation.",
+            "slides": [],
+            "stats": [],
+            "items": [],
+            "steps": []
+          }
+        ],
+        "createdAt": "2026-06-12T19:50:01.951Z",
+        "updatedAt": "2026-06-13T04:51:42.759Z"
+      }
+    ],
+    "Navigation": [
+      {
+        "_id": "6a2c62ea444f7d5b11699ec6",
+        "ctaText": "Get Free Quote",
+        "ctaLink": "/contact",
+        "sticky": true,
+        "links": [
+          {
+            "label": "Home",
+            "href": "/",
+            "order": 0
+          },
+          {
+            "label": "Projects",
+            "href": "/projects",
+            "order": 1
+          },
+          {
+            "label": "Services",
+            "href": "/services",
+            "order": 2
+          },
+          {
+            "label": "About",
+            "href": "/about",
+            "order": 3
+          },
+          {
+            "label": "Blog",
+            "href": "/blog",
+            "order": 4
+          },
+          {
+            "label": "Contact",
+            "href": "/contact",
+            "order": 5
+          }
+        ],
+        "createdAt": "2026-06-12T19:50:02.592Z",
+        "updatedAt": "2026-06-12T19:50:02.592Z"
+      }
+    ],
+    "SEOSettings": [
+      {
+        "_id": "6a2c62ea444f7d5b11699ec5",
+        "pages": [
+          {
+            "page": "home",
+            "metaTitle": "",
+            "metaDescription": "",
+            "keywords": [],
+            "canonicalUrl": "",
+            "ogImage": "",
+            "twitterCard": "summary_large_image"
+          },
+          {
+            "page": "about",
+            "metaTitle": "",
+            "metaDescription": "",
+            "keywords": [],
+            "canonicalUrl": "",
+            "ogImage": "",
+            "twitterCard": "summary_large_image"
+          },
+          {
+            "page": "services",
+            "metaTitle": "",
+            "metaDescription": "",
+            "keywords": [],
+            "canonicalUrl": "",
+            "ogImage": "",
+            "twitterCard": "summary_large_image"
+          },
+          {
+            "page": "projects",
+            "metaTitle": "",
+            "metaDescription": "",
+            "keywords": [],
+            "canonicalUrl": "",
+            "ogImage": "",
+            "twitterCard": "summary_large_image"
+          },
+          {
+            "page": "contact",
+            "metaTitle": "",
+            "metaDescription": "",
+            "keywords": [],
+            "canonicalUrl": "",
+            "ogImage": "",
+            "twitterCard": "summary_large_image"
+          },
+          {
+            "page": "blog",
+            "metaTitle": "",
+            "metaDescription": "",
+            "keywords": [],
+            "canonicalUrl": "",
+            "ogImage": "",
+            "twitterCard": "summary_large_image"
+          }
+        ],
+        "createdAt": "2026-06-12T19:50:02.497Z",
+        "updatedAt": "2026-06-12T19:50:02.497Z"
+      }
+    ],
+    "SocialLinks": [
+      {
+        "_id": "6a2c62ea444f7d5b11699ec4",
+        "links": [
+          {
+            "platform": "Facebook",
+            "url": "",
+            "icon": "Facebook",
+            "enabled": true,
+            "openNewTab": true,
+            "order": 0
+          },
+          {
+            "platform": "Instagram",
+            "url": "",
+            "icon": "Instagram",
+            "enabled": true,
+            "openNewTab": true,
+            "order": 1
+          },
+          {
+            "platform": "LinkedIn",
+            "url": "",
+            "icon": "Linkedin",
+            "enabled": true,
+            "openNewTab": true,
+            "order": 2
+          },
+          {
+            "platform": "YouTube",
+            "url": "",
+            "icon": "Youtube",
+            "enabled": true,
+            "openNewTab": true,
+            "order": 3
+          },
+          {
+            "platform": "Pinterest",
+            "url": "",
+            "icon": "Pinterest",
+            "enabled": true,
+            "openNewTab": true,
+            "order": 4
+          },
+          {
+            "platform": "Twitter",
+            "url": "",
+            "icon": "Twitter",
+            "enabled": true,
+            "openNewTab": true,
+            "order": 5
+          },
+          {
+            "platform": "Threads",
+            "url": "",
+            "icon": "MessageCircle",
+            "enabled": true,
+            "openNewTab": true,
+            "order": 6
+          },
+          {
+            "platform": "Behance",
+            "url": "",
+            "icon": "Briefcase",
+            "enabled": true,
+            "openNewTab": true,
+            "order": 7
+          },
+          {
+            "platform": "Houzz",
+            "url": "",
+            "icon": "Home",
+            "enabled": true,
+            "openNewTab": true,
+            "order": 8
+          }
+        ],
+        "createdAt": "2026-06-12T19:50:02.368Z",
+        "updatedAt": "2026-06-12T19:50:02.368Z"
+      }
+    ],
+    "Branding": [
+      {
+        "_id": "6a2c62e9444f7d5b11699ec0",
+        "primaryColor": "#C8A97E",
+        "secondaryColor": "#111827",
+        "createdAt": "2026-06-12T19:50:01.598Z",
+        "updatedAt": "2026-06-12T21:15:20.543Z",
+        "logo": "/uploads/branding/1781296123387-Usethisoneforwhitebackground.webp",
+        "mobileLogo": "/uploads/branding/1781296310101-Usethisoneforblackbackground.webp",
+        "footerLogo": "/uploads/branding/1781296315787-Usethisoneforblackbackground.webp",
+        "lightLogo": "/uploads/branding/1781296325723-Usethisoneforwhitebackground.webp",
+        "darkLogo": "/uploads/branding/1781298904940-Usethisoneforblackbackground.webp",
+        "favicon": "/uploads/branding/1781296337663-Usethisoneforwhitebackground.webp",
+        "adminLogo": "/uploads/branding/1781298868201-Usethisoneforblackbackground.webp",
+        "siteName": "AkInteriors",
+        "appIcon": "/uploads/branding/1781298894601-Usethisoneforwhitebackground.webp"
+      }
+    ]
+  }
+}
