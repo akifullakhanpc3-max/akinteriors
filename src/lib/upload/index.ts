@@ -1,6 +1,9 @@
 import path from 'path';
 import crypto from 'crypto';
 
+const HOST = (process.env.NEXT_PUBLIC_HOSTINGER_URL || 'https://akinterious.in').replace(/\/+$/, '');
+const UPLOAD_PATH = '/akinterious/uploads';
+
 async function getSharp() {
   try {
     return (await import('sharp')).default;
@@ -29,6 +32,10 @@ function generateFilename(ext: string): string {
   return `${timestamp}-${random}.${ext}`;
 }
 
+function buildImageUrl(filename: string): string {
+  return `${HOST}${UPLOAD_PATH}/${filename}`;
+}
+
 async function uploadToHostinger(
   buffer: Buffer,
   filename: string,
@@ -41,15 +48,27 @@ async function uploadToHostinger(
 
   const controller = new AbortController();
   const timeout = setTimeout(() => controller.abort(), 30000);
-  const res = await fetch(url, {
-    method: 'POST',
-    body: formData,
-    signal: controller.signal,
-  }).finally(() => clearTimeout(timeout));
+  let res: Response;
+  try {
+    res = await fetch(url, {
+      method: 'POST',
+      body: formData,
+      signal: controller.signal,
+    });
+  } finally {
+    clearTimeout(timeout);
+  }
 
   if (!res.ok) {
-    const err = await res.json().catch(() => ({ error: 'Upload failed' }));
-    throw new Error(err.error || `Upload failed with status ${res.status}`);
+    let errorText: string;
+    try {
+      const body = await res.json();
+      errorText = body.error || `HTTP ${res.status}`;
+    } catch {
+      const text = await res.text().catch(() => '');
+      errorText = text ? text.slice(0, 200) : `HTTP ${res.status}`;
+    }
+    throw new Error(`Upload to Hostinger failed: ${errorText}`);
   }
 
   const data = await res.json();
@@ -63,14 +82,22 @@ async function uploadToHostinger(
 async function deleteFromHostinger(filename: string): Promise<void> {
   const url = getUploadUrl();
   const apiKey = process.env.HOSTINGER_UPLOAD_API_KEY || '';
-  await fetch(url, {
-    method: 'DELETE',
-    headers: {
-      'Content-Type': 'application/json',
-      'X-API-Key': apiKey,
-    },
-    body: JSON.stringify({ filename }),
-  }).catch(() => {});
+  try {
+    const res = await fetch(url, {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json',
+        'X-API-Key': apiKey,
+      },
+      body: JSON.stringify({ filename }),
+    });
+    if (!res.ok) {
+      const body = await res.json().catch(() => ({}));
+      console.warn('Delete from Hostinger warning:', body.error || `HTTP ${res.status}`);
+    }
+  } catch (err) {
+    console.warn('Delete from Hostinger error:', err);
+  }
 }
 
 export async function saveImage(

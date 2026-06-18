@@ -1,7 +1,7 @@
 'use client';
 
-import { useState, useRef, useCallback } from 'react';
-import { Upload, X, Image as ImageIcon, Search, Loader2, Trash2, ExternalLink } from 'lucide-react';
+import { useState, useRef, useCallback, useEffect } from 'react';
+import { Upload, X, Image as ImageIcon, Search, Loader2, Trash2, ExternalLink, Clock } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
@@ -28,11 +28,29 @@ interface ImagePickerProps {
 export default function ImagePicker({ value, onChange, category = 'general', section = 'general', label = 'Image' }: ImagePickerProps) {
   const [showLibrary, setShowLibrary] = useState(false);
   const [uploading, setUploading] = useState(false);
+  const [uploadProgress, setUploadProgress] = useState(0);
+  const [uploadStatus, setUploadStatus] = useState('');
   const [libraryImages, setLibraryImages] = useState<ImageItem[]>([]);
   const [libraryLoading, setLibraryLoading] = useState(false);
   const [search, setSearch] = useState('');
   const [dragOver, setDragOver] = useState(false);
   const fileRef = useRef<HTMLInputElement>(null);
+  const startTimeRef = useRef(0);
+
+  useEffect(() => {
+    if (!uploading) { setUploadProgress(0); setUploadStatus(''); return; }
+    startTimeRef.current = Date.now();
+    const interval = setInterval(() => {
+      const elapsed = (Date.now() - startTimeRef.current) / 1000;
+      const pct = Math.min(95, Math.round((elapsed / 30) * 100));
+      setUploadProgress(pct);
+      if (elapsed < 3) setUploadStatus('Uploading...');
+      else if (elapsed < 8) setUploadStatus('Processing image...');
+      else if (elapsed < 15) setUploadStatus('Uploading to storage...');
+      else setUploadStatus('Almost done...');
+    }, 250);
+    return () => clearInterval(interval);
+  }, [uploading]);
 
   const uploadFile = useCallback(async (file: File) => {
     if (file.size > 5 * 1024 * 1024) { alert('File too large (max 5MB)'); return; }
@@ -40,6 +58,7 @@ export default function ImagePicker({ value, onChange, category = 'general', sec
     if (!allowed.includes(file.type)) { alert('Only JPG, PNG, WebP allowed'); return; }
 
     setUploading(true);
+    setUploadProgress(0);
     try {
       const fd = new FormData();
       fd.append('file', file);
@@ -49,6 +68,8 @@ export default function ImagePicker({ value, onChange, category = 'general', sec
       fd.append('isActive', 'true');
 
       const res = await fetch('/api/admin/images', { method: 'POST', body: fd });
+      setUploadProgress(100);
+      setUploadStatus('Complete!');
       if (res.ok) {
         const data = await res.json();
         if (data.success) {
@@ -139,7 +160,17 @@ export default function ImagePicker({ value, onChange, category = 'general', sec
           {uploading ? (
             <div className="flex flex-col items-center gap-2">
               <Loader2 className="w-8 h-8 animate-spin text-[#C8A97E]" />
-              <span className="text-sm text-gray-500">Uploading...</span>
+              <span className="text-sm text-gray-500">{uploadStatus}</span>
+              <div className="w-full max-w-xs bg-gray-200 rounded-full h-2 mt-1">
+                <div
+                  className="bg-[#C8A97E] h-2 rounded-full transition-all duration-300"
+                  style={{ width: `${uploadProgress}%` }}
+                />
+              </div>
+              <span className="text-xs text-gray-400 flex items-center gap-1">
+                <Clock className="w-3 h-3" />
+                {uploadProgress}%
+              </span>
             </div>
           ) : (
             <div className="flex flex-col items-center gap-2">

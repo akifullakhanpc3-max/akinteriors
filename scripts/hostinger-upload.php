@@ -1,15 +1,25 @@
 <?php
 /**
  * Hostinger Image Upload Handler
- * Deploy this file to: public_html/akinterious/upload.php
- * 
- * Endpoints:
- *   POST   - Upload an image file
- *   DELETE - Delete an image (requires X-API-Key header)
- *   OPTIONS- CORS preflight
+ * Deploy to: public_html/akinterious/upload.php
+ *
+ * POST   - Upload image (multipart/form-data, field: "file")
+ * DELETE - Delete image (requires X-API-Key header)
+ * OPTIONS- CORS preflight
+ *
+ * Accepted: JPG, PNG, WEBP (max 5 MB)
+ * Saved to: public_html/akinterious/uploads/
+ * URL:      https://akinterious.in/akinterious/uploads/{filename}
  */
 
-$allowedOrigins = ['https://akinteriors.design', 'http://localhost:3000'];
+$allowedOrigins = [
+    'https://akinteriors.design',
+    'https://www.akinteriors.design',
+    'https://akinterious.in',
+    'https://www.akinterious.in',
+    'http://localhost:3000',
+];
+
 $origin = $_SERVER['HTTP_ORIGIN'] ?? '';
 header('Access-Control-Allow-Origin: ' . (in_array($origin, $allowedOrigins) ? $origin : $allowedOrigins[0]));
 header('Access-Control-Allow-Methods: POST, DELETE, OPTIONS');
@@ -38,22 +48,22 @@ function ensureUploadDir(): void {
         mkdir(UPLOAD_DIR, 0755, true);
     }
 
+    // Prevent script execution in uploads directory
     $htaccess = UPLOAD_DIR . '/.htaccess';
     if (!file_exists($htaccess)) {
-        $rules = <<<'HTACCESS'
-Options -ExecCGI
-AddHandler cgi-script .php .php3 .php4 .php5 .phtml .pl .py .jsp .asp .aspx .sh .cgi
-<FilesMatch "\.(php|php3|php4|php5|phtml|pl|py|jsp|asp|aspx|sh|cgi)$">
-    Order Deny,Allow
-    Deny from all
-</FilesMatch>
-HTACCESS;
-        file_put_contents($htaccess, $rules);
+        file_put_contents($htaccess, implode("\n", [
+            'Options -ExecCGI',
+            'AddHandler cgi-script .php .php3 .php4 .php5 .phtml .pl .py .jsp .asp .aspx .sh .cgi',
+            '<FilesMatch "\.(php|php3|php4|php5|phtml|pl|py|jsp|asp|aspx|sh|cgi)$">',
+            '    Order Deny,Allow',
+            '    Deny from all',
+            '</FilesMatch>',
+        ]));
     }
 
-    $index = UPLOAD_DIR . '/index.html';
-    if (!file_exists($index)) {
-        file_put_contents($index, '<!DOCTYPE html><title>Forbidden</title>');
+    // Prevent directory listing
+    if (!file_exists(UPLOAD_DIR . '/index.html')) {
+        file_put_contents(UPLOAD_DIR . '/index.html', '<!DOCTYPE html><title>Forbidden</title>');
     }
 }
 
@@ -71,7 +81,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         ensureUploadDir();
 
         if (!isset($_FILES['file']) || $_FILES['file']['error'] !== UPLOAD_ERR_OK) {
-            jsonResponse(400, ['success' => false, 'error' => 'No file uploaded or upload error']);
+            $errorCode = isset($_FILES['file']) ? $_FILES['file']['error'] : -1;
+            jsonResponse(400, ['success' => false, 'error' => "No file uploaded or upload error (code: {$errorCode})"]);
         }
 
         $file = $_FILES['file'];
@@ -80,28 +91,31 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             jsonResponse(400, ['success' => false, 'error' => 'File too large (max 5MB)']);
         }
 
+        // MIME type validation (server-side)
         $finfo = finfo_open(FILEINFO_MIME_TYPE);
-        $mimeType = finfo_file($finfo, $file['tmp_name']);
+        $mime = finfo_file($finfo, $file['tmp_name']);
         finfo_close($finfo);
 
-        if (!in_array($mimeType, ALLOWED_MIMES)) {
-            jsonResponse(400, ['success' => false, 'error' => 'Only JPG, PNG, WEBP allowed']);
+        if (!in_array($mime, ALLOWED_MIMES)) {
+            jsonResponse(400, ['success' => false, 'error' => 'Only JPG, PNG, WEBP allowed (detected: ' . $mime . ')']);
         }
 
+        // Extension validation
         $ext = strtolower(pathinfo($file['name'], PATHINFO_EXTENSION));
         if (!in_array($ext, ALLOWED_EXTS)) {
-            jsonResponse(400, ['success' => false, 'error' => 'Invalid file extension']);
+            jsonResponse(400, ['success' => false, 'error' => 'Invalid file extension: ' . $ext]);
         }
 
         $filename = sanitizeFilename($file['name']);
         $destPath = UPLOAD_DIR . '/' . $filename;
 
         if (!move_uploaded_file($file['tmp_name'], $destPath)) {
-            jsonResponse(500, ['success' => false, 'error' => 'Failed to save file']);
+            jsonResponse(500, ['success' => false, 'error' => 'Failed to save file (permission error)']);
         }
 
+        // Construct public URL
         $protocol = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off') ? 'https' : 'http';
-        $host = $_SERVER['HTTP_HOST'];
+        $host = $_SERVER['HTTP_HOST'] ?? 'akinterious.in';
         $basePath = rtrim(dirname($_SERVER['SCRIPT_NAME']), '/');
         $imageUrl = "{$protocol}://{$host}{$basePath}/uploads/{$filename}";
 
@@ -118,8 +132,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 // DELETE / Delete
 if ($_SERVER['REQUEST_METHOD'] === 'DELETE') {
-    $apiKey = $_SERVER['HTTP_X_API_KEY'] ?? '';
-    if ($apiKey !== API_KEY) {
+    $key = $_SERVER['HTTP_X_API_KEY'] ?? '';
+    if ($key !== API_KEY) {
         jsonResponse(401, ['success' => false, 'error' => 'Unauthorized']);
     }
 
