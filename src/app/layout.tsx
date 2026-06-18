@@ -4,6 +4,7 @@ import { ThemeProvider } from '@/components/ui/theme-provider';
 import SessionProvider from '@/components/SessionProvider';
 import { Toaster } from '@/components/ui/toaster';
 import { getSEOSettings } from '@/lib/actions/cms-actions';
+import MaintenanceGuard from '@/components/MaintenanceGuard';
 import './globals.css';
 
 const playfair = Playfair_Display({
@@ -66,7 +67,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <SessionProvider>
           <ThemeProvider>
             <Toaster />
-            {children}
+            <MaintenanceGuard>
+              {children}
+            </MaintenanceGuard>
           </ThemeProvider>
         </SessionProvider>
       </body>

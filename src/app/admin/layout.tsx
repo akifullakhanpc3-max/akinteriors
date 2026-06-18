@@ -7,7 +7,7 @@ import { signOut, useSession } from 'next-auth/react';
 import { checkWeeklyBackup } from '@/lib/actions/backup-actions';
 import {
   Diamond, LayoutDashboard, FolderOpen, Grid3X3, Star, Users,
-  HelpCircle, FileText, MessageSquare, LogOut, Menu, X, ExternalLink, ImageIcon, Globe, Loader2, Settings, Shield,
+  HelpCircle, FileText, MessageSquare, LogOut, Menu, X, ExternalLink, ImageIcon, Globe, Loader2, Settings, Shield, User,
 } from 'lucide-react';
 import { cn } from '@/lib/utils/cn';
 
@@ -22,6 +22,7 @@ const sidebarLinks = [
   { label: 'CMS', href: '/admin/cms', icon: Globe },
   { label: 'Images', href: '/admin/images', icon: ImageIcon },
   { label: 'Inquiries', href: '/admin/inquiries', icon: MessageSquare },
+  { label: 'Profile', href: '/admin/profile', icon: User },
   { label: 'Settings', href: '/admin/settings', icon: Settings },
   { label: 'Backup', href: '/admin/backup', icon: Shield },
 ];

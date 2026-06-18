@@ -184,12 +184,6 @@ export default function ContactPage() {
                 </div>
               ))}
 
-              <div className="rounded-2xl overflow-hidden h-64 shadow-sm">
-                <div className="w-full h-full bg-gray-200 flex items-center justify-center text-gray-500">
-                  <MapPin className="w-8 h-8 mr-2" />
-                  Google Maps
-                </div>
-              </div>
             </motion.div>
           </div>
         </div>
