@@ -1,7 +1,8 @@
 import type { MetadataRoute } from 'next';
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://akinteriors.com';
+  const rawUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://akinteriors.com';
+  const baseUrl = rawUrl.startsWith('http') ? rawUrl : `https://${rawUrl}`;
 
   return [
     { url: baseUrl, lastModified: new Date(), changeFrequency: 'weekly', priority: 1 },

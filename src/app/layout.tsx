@@ -20,7 +20,8 @@ const inter = Inter({
   preload: true,
 });
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://akinteriors.com';
+const rawUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://akinteriors.com';
+const siteUrl = rawUrl.startsWith('http') ? rawUrl : `https://${rawUrl}`;
 
 export async function generateMetadata(): Promise<Metadata> {
   try {
