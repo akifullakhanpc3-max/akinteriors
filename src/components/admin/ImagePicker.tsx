@@ -49,14 +49,21 @@ export default function ImagePicker({ value, onChange, category = 'general', sec
       fd.append('isActive', 'true');
 
       const res = await fetch('/api/admin/images', { method: 'POST', body: fd });
-      const data = await res.json();
-      if (data.success) {
-        onChange(data.image.imageUrl);
+      if (res.ok) {
+        const data = await res.json();
+        if (data.success) {
+          onChange(data.image.imageUrl);
+        } else {
+          alert(data.error || 'Upload failed');
+        }
       } else {
-        alert(data.error || 'Upload failed');
+        const text = await res.text().catch(() => '');
+        let msg: string;
+        try { msg = JSON.parse(text).error || text; } catch { msg = text || `Server error (${res.status})`; }
+        alert(msg);
       }
-    } catch {
-      alert('Upload failed');
+    } catch (e) {
+      alert(e instanceof Error ? e.message : 'Upload failed');
     } finally {
       setUploading(false);
     }

@@ -36,13 +36,16 @@ async function uploadToHostinger(
   const url = getUploadUrl();
   const formData = new FormData();
   const uint8 = new Uint8Array(buffer);
-  const blob = new Blob([uint8]);
+  const blob = new Blob([uint8], { type: 'application/octet-stream' });
   formData.append('file', blob, filename);
 
+  const controller = new AbortController();
+  const timeout = setTimeout(() => controller.abort(), 30000);
   const res = await fetch(url, {
     method: 'POST',
     body: formData,
-  });
+    signal: controller.signal,
+  }).finally(() => clearTimeout(timeout));
 
   if (!res.ok) {
     const err = await res.json().catch(() => ({ error: 'Upload failed' }));

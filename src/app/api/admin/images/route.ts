@@ -55,18 +55,14 @@ export async function GET(request: NextRequest) {
 }
 
 export async function POST(request: NextRequest) {
-  const session = await auth();
-  if (!checkAccess(session, true)) {
-    return NextResponse.json({ success: false, error: 'Unauthorized' }, { status: 401 });
-  }
-
   try {
+    const session = await auth();
+    if (!checkAccess(session, true)) {
+      return NextResponse.json({ success: false, error: 'Unauthorized' }, { status: 401 });
+    }
+
     await connectDB();
-  } catch {
-    return NextResponse.json({ success: false, error: 'Database connection failed' }, { status: 500 });
-  }
 
-  try {
     const formData = await request.formData();
     const title = formData.get('title') as string;
     const category = formData.get('category') as string;
@@ -81,20 +77,36 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ success: false, error: parsed.error.issues[0].message }, { status: 400 });
     }
 
-    if (!file || file.size === 0) {
+    if (!file || (typeof file === 'object' && 'size' in file && (file as File).size === 0)) {
       return NextResponse.json({ success: false, error: 'File is required' }, { status: 400 });
     }
 
+    const typedFile = file as File;
     const allowedTypes = ['image/jpeg', 'image/png', 'image/webp', 'image/jpg'];
-    if (!allowedTypes.includes(file.type)) {
+    if (typedFile.type && !allowedTypes.includes(typedFile.type)) {
       return NextResponse.json({ success: false, error: 'Only JPG, PNG, WebP allowed' }, { status: 400 });
     }
-    if (file.size > 5 * 1024 * 1024) {
+    if (typedFile.size > 5 * 1024 * 1024) {
       return NextResponse.json({ success: false, error: 'File too large (max 5MB)' }, { status: 400 });
     }
 
-    const buffer = Buffer.from(await file.arrayBuffer());
-    const result = await saveImage(buffer, file.name, parsed.data.category);
+    let buffer: Buffer;
+    if (typeof typedFile.arrayBuffer === 'function') {
+      buffer = Buffer.from(await typedFile.arrayBuffer());
+    } else if (typeof typedFile.stream === 'function') {
+      const reader = (typedFile as File).stream().getReader();
+      const chunks: Uint8Array[] = [];
+      while (true) {
+        const { done, value } = await reader.read();
+        if (done) break;
+        chunks.push(value);
+      }
+      const total = chunks.reduce((s, c) => s + c.length, 0);
+      buffer = Buffer.concat(chunks.map(c => Buffer.from(c)), total);
+    } else {
+      return NextResponse.json({ success: false, error: 'File reading not supported' }, { status: 500 });
+    }
+    const result = await saveImage(buffer, typedFile.name || 'image.jpg', parsed.data.category);
 
     const image = new WebsiteImage({
       title: parsed.data.title,
@@ -118,6 +130,9 @@ export async function POST(request: NextRequest) {
     revalidatePath('/(site)/');
     return NextResponse.json({ success: true, image: JSON.parse(JSON.stringify(image)) });
   } catch (err) {
-    return NextResponse.json({ success: false, error: `Failed to upload image: ${err instanceof Error ? err.message : 'Unknown error'}` }, { status: 500 });
+    const message = err instanceof Error ? err.message : 'Unknown error';
+    const stack = err instanceof Error ? err.stack : '';
+    console.error('Upload error:', message, stack);
+    return NextResponse.json({ success: false, error: `Upload failed: ${message}` }, { status: 500 });
   }
 }

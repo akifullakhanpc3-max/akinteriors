@@ -9,7 +9,9 @@
  *   OPTIONS- CORS preflight
  */
 
-header('Access-Control-Allow-Origin: https://akinteriors.vercel.app');
+$allowedOrigins = ['https://akinteriors.design', 'http://localhost:3000'];
+$origin = $_SERVER['HTTP_ORIGIN'] ?? '';
+header('Access-Control-Allow-Origin: ' . (in_array($origin, $allowedOrigins) ? $origin : $allowedOrigins[0]));
 header('Access-Control-Allow-Methods: POST, DELETE, OPTIONS');
 header('Access-Control-Allow-Headers: Content-Type, X-API-Key');
 header('Content-Type: application/json');
