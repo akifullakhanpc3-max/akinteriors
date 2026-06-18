@@ -56,8 +56,7 @@ export async function updatePassword(data: { currentPassword: string; newPasswor
     const isMatch = await bcrypt.compare(data.currentPassword, user.password);
     if (!isMatch) return { success: false, error: 'Current password is incorrect' };
 
-    const salt = await bcrypt.genSalt(12);
-    user.password = await bcrypt.hash(data.newPassword, salt);
+    user.password = data.newPassword;
     await user.save();
 
     return { success: true };
