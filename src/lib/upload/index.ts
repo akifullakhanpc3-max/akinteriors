@@ -1,5 +1,7 @@
 import path from 'path';
 import fs from 'fs/promises';
+import os from 'os';
+import { uploadBuffer, deleteFile as firebaseDelete } from '@/lib/firebase/storage';
 
 const UPLOAD_DIR = path.join(process.cwd(), 'public/uploads');
 
@@ -8,14 +10,6 @@ async function getSharp() {
     return (await import('sharp')).default;
   } catch {
     return null;
-  }
-}
-
-export async function ensureDir(dir: string) {
-  try {
-    await fs.mkdir(dir, { recursive: true });
-  } catch {
-    // directory already exists
   }
 }
 
@@ -37,20 +31,24 @@ export async function saveImage(
 
   const ext = path.extname(filename).toLowerCase().replace('.', '') || 'jpg';
   const isSvg = ext === 'svg';
-  const name = `${Date.now()}-${path.basename(filename).replace(/[^a-zA-Z0-9.-]/g, '').replace(/\.[^.]+$/, '')}`;
+  const sanitized = path.basename(filename).replace(/[^a-zA-Z0-9.-]/g, '');
+  const name = `${Date.now()}-${sanitized.replace(/\.[^.]+$/, '')}`;
+  const destFolder = `uploads/${folder}`;
 
   if (isSvg) {
     const outputFilename = `${name}.svg`;
-    const outputPath = path.join(uploadPath, outputFilename);
-    await fs.writeFile(outputPath, buffer);
-    const stats = await fs.stat(outputPath);
-    return {
-      imageUrl: `/uploads/${folder}/${outputFilename}`,
-      thumbnailUrl: `/uploads/${folder}/${outputFilename}`,
-      dimensions: { width: 0, height: 0 },
-      fileSize: stats.size,
-      imageType: 'svg',
-    };
+    const contentType = 'image/svg+xml';
+    const url = await uploadBuffer(buffer, `${destFolder}/${outputFilename}`, contentType);
+
+    if (url) {
+      return {
+        imageUrl: url,
+        thumbnailUrl: url,
+        dimensions: { width: 0, height: 0 },
+        fileSize: buffer.length,
+        imageType: 'svg',
+      };
+    }
   }
 
   const sharp = await getSharp();
@@ -60,38 +58,57 @@ export async function saveImage(
       const width = metadata.width || 1920;
       const height = metadata.height || 1080;
 
-      const outputFilename = `${name}.webp`;
-      const outputPath = path.join(uploadPath, outputFilename);
-
       let pipeline = sharp(buffer);
       if (width > 1920) {
         pipeline = pipeline.resize(1920, 1080, { fit: 'inside', withoutEnlargement: true });
       }
-      pipeline = pipeline.webp({ quality: 75 });
-      await pipeline.toFile(outputPath);
-      const stats = await fs.stat(outputPath);
+      const processed = await pipeline.webp({ quality: 75 }).toBuffer();
+      const thumb = await sharp(buffer)
+        .resize(400, 300, { fit: 'cover' })
+        .webp({ quality: 60 })
+        .toBuffer();
 
+      const outputFilename = `${name}.webp`;
       const thumbFilename = `thumb-${outputFilename}`;
-      const thumbPath = path.join(uploadPath, thumbFilename);
-      await sharp(buffer).resize(400, 300, { fit: 'cover' }).webp({ quality: 60 }).toFile(thumbPath);
+      const contentType = 'image/webp';
 
-      return {
-        imageUrl: `/uploads/${folder}/${outputFilename}`,
-        thumbnailUrl: `/uploads/${folder}/${thumbFilename}`,
-        dimensions: { width, height },
-        fileSize: stats.size,
-        imageType: 'webp',
-      };
+      const [imageUrl, thumbnailUrl] = await Promise.all([
+        uploadBuffer(processed, `${destFolder}/${outputFilename}`, contentType),
+        uploadBuffer(thumb, `${destFolder}/${thumbFilename}`, contentType),
+      ]);
+
+      if (imageUrl && thumbnailUrl) {
+        return {
+          imageUrl,
+          thumbnailUrl,
+          dimensions: { width, height },
+          fileSize: processed.length,
+          imageType: 'webp',
+        };
+      }
     } catch {
-      // sharp processing failed — fall through to as-is save
+      // fall through to as-is save
     }
   }
 
-  // fallback: save file as-is (no conversion, no thumbnail)
   const outputFilename = `${name}.${ext}`;
-  const outputPath = path.join(uploadPath, outputFilename);
-  await fs.writeFile(outputPath, buffer);
-  const stats = await fs.stat(outputPath);
+  const contentType = `image/${ext === 'jpg' ? 'jpeg' : ext}`;
+  const url = await uploadBuffer(buffer, `${destFolder}/${outputFilename}`, contentType);
+
+  if (url) {
+    return {
+      imageUrl: url,
+      thumbnailUrl: url,
+      dimensions: { width: 0, height: 0 },
+      fileSize: buffer.length,
+      imageType: ext,
+    };
+  }
+
+  // ultimate fallback: local filesystem
+  const localOutput = path.join(uploadPath, outputFilename);
+  await fs.writeFile(localOutput, buffer);
+  const stats = await fs.stat(localOutput);
   return {
     imageUrl: `/uploads/${folder}/${outputFilename}`,
     thumbnailUrl: `/uploads/${folder}/${outputFilename}`,
@@ -101,9 +118,17 @@ export async function saveImage(
   };
 }
 
-export async function deleteImage(imagePath: string) {
-  if (!imagePath) return;
-  const fullPath = path.join(process.cwd(), 'public', imagePath);
+export async function deleteImage(imageUrl: string) {
+  if (!imageUrl) return;
+
+  if (imageUrl.startsWith('http')) {
+    await firebaseDelete(imageUrl);
+    const thumbUrl = imageUrl.replace(/([^/]+)$/, 'thumb-$1');
+    await firebaseDelete(thumbUrl).catch(() => {});
+    return;
+  }
+
+  const fullPath = path.join(process.cwd(), 'public', imageUrl);
   const thumbPath = fullPath.replace(/([^/]+)$/, 'thumb-$1');
 
   try {
@@ -111,5 +136,13 @@ export async function deleteImage(imagePath: string) {
     await fs.unlink(thumbPath).catch(() => {});
   } catch {
     // file not found
+  }
+}
+
+export async function ensureDir(dir: string) {
+  try {
+    await fs.mkdir(dir, { recursive: true });
+  } catch {
+    // directory already exists
   }
 }
