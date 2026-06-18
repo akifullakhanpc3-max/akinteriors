@@ -1,11 +1,11 @@
 const firebaseConfig = {
-  apiKey: "AIzaSyDmwZEQuRWOl_upBuKXVzOwI2jytmKvJN4",
-  authDomain: "akinteriors-bbb0a.firebaseapp.com",
-  projectId: "akinteriors-bbb0a",
-  storageBucket: "akinteriors-bbb0a.firebasestorage.app",
-  messagingSenderId: "877487096069",
-  appId: "1:877487096069:web:acca3f88db531bc0e1376c",
-  measurementId: "G-4TQNW9T2M5"
+  apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY!,
+  authDomain: process.env.NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN!,
+  projectId: process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID!,
+  storageBucket: process.env.NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET!,
+  messagingSenderId: process.env.NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID!,
+  appId: process.env.NEXT_PUBLIC_FIREBASE_APP_ID!,
+  measurementId: process.env.NEXT_PUBLIC_FIREBASE_MEASUREMENT_ID,
 };
 
 export default firebaseConfig;
