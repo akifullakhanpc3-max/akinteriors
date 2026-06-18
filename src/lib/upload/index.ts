@@ -1,6 +1,5 @@
 import path from 'path';
 import fs from 'fs/promises';
-import os from 'os';
 import { uploadBuffer, deleteFile as firebaseDelete } from '@/lib/firebase/storage';
 
 const UPLOAD_DIR = path.join(process.cwd(), 'public/uploads');
@@ -21,14 +20,27 @@ export interface SaveImageResult {
   imageType: string;
 }
 
+async function saveLocally(buffer: Buffer, folder: string, name: string, ext: string) {
+  const relativePath = `uploads/${folder}`;
+  const uploadPath = path.join(UPLOAD_DIR, folder);
+  await fs.mkdir(uploadPath, { recursive: true });
+  const outputFilename = `${name}.${ext}`;
+  const outputPath = path.join(uploadPath, outputFilename);
+  await fs.writeFile(outputPath, buffer);
+  const stats = await fs.stat(outputPath);
+  return {
+    imageUrl: `/${relativePath}/${outputFilename}`,
+    thumbnailUrl: `/${relativePath}/${outputFilename}`,
+    fileSize: stats.size,
+    imageType: ext,
+  };
+}
+
 export async function saveImage(
   buffer: Buffer,
   filename: string,
   folder: string
 ): Promise<SaveImageResult> {
-  const uploadPath = path.join(UPLOAD_DIR, folder);
-  await ensureDir(uploadPath);
-
   const ext = path.extname(filename).toLowerCase().replace('.', '') || 'jpg';
   const isSvg = ext === 'svg';
   const sanitized = path.basename(filename).replace(/[^a-zA-Z0-9.-]/g, '');
@@ -36,10 +48,8 @@ export async function saveImage(
   const destFolder = `uploads/${folder}`;
 
   if (isSvg) {
-    const outputFilename = `${name}.svg`;
-    const contentType = 'image/svg+xml';
-    const url = await uploadBuffer(buffer, `${destFolder}/${outputFilename}`, contentType);
-
+    const destPath = `${destFolder}/${name}.svg`;
+    const url = await uploadBuffer(buffer, destPath, 'image/svg+xml');
     if (url) {
       return {
         imageUrl: url,
@@ -49,6 +59,8 @@ export async function saveImage(
         imageType: 'svg',
       };
     }
+    const local = await saveLocally(buffer, folder, name, 'svg');
+    return { ...local, dimensions: { width: 0, height: 0 } };
   }
 
   const sharp = await getSharp();
@@ -57,6 +69,9 @@ export async function saveImage(
       const metadata = await sharp(buffer).metadata();
       const width = metadata.width || 1920;
       const height = metadata.height || 1080;
+
+      const outputFilename = `${name}.webp`;
+      const thumbFilename = `thumb-${outputFilename}`;
 
       let pipeline = sharp(buffer);
       if (width > 1920) {
@@ -68,13 +83,9 @@ export async function saveImage(
         .webp({ quality: 60 })
         .toBuffer();
 
-      const outputFilename = `${name}.webp`;
-      const thumbFilename = `thumb-${outputFilename}`;
-      const contentType = 'image/webp';
-
       const [imageUrl, thumbnailUrl] = await Promise.all([
-        uploadBuffer(processed, `${destFolder}/${outputFilename}`, contentType),
-        uploadBuffer(thumb, `${destFolder}/${thumbFilename}`, contentType),
+        uploadBuffer(processed, `${destFolder}/${outputFilename}`, 'image/webp'),
+        uploadBuffer(thumb, `${destFolder}/${thumbFilename}`, 'image/webp'),
       ]);
 
       if (imageUrl && thumbnailUrl) {
@@ -86,15 +97,23 @@ export async function saveImage(
           imageType: 'webp',
         };
       }
+
+      const local = await saveLocally(processed, folder, name, 'webp');
+      const localThumb = await saveLocally(thumb, folder, `thumb-${name}`, 'webp');
+      return {
+        imageUrl: local.imageUrl,
+        thumbnailUrl: localThumb.imageUrl,
+        dimensions: { width, height },
+        fileSize: processed.length,
+        imageType: 'webp',
+      };
     } catch {
       // fall through to as-is save
     }
   }
 
-  const outputFilename = `${name}.${ext}`;
   const contentType = `image/${ext === 'jpg' ? 'jpeg' : ext}`;
-  const url = await uploadBuffer(buffer, `${destFolder}/${outputFilename}`, contentType);
-
+  const url = await uploadBuffer(buffer, `${destFolder}/${name}.${ext}`, contentType);
   if (url) {
     return {
       imageUrl: url,
@@ -105,17 +124,8 @@ export async function saveImage(
     };
   }
 
-  // ultimate fallback: local filesystem
-  const localOutput = path.join(uploadPath, outputFilename);
-  await fs.writeFile(localOutput, buffer);
-  const stats = await fs.stat(localOutput);
-  return {
-    imageUrl: `/uploads/${folder}/${outputFilename}`,
-    thumbnailUrl: `/uploads/${folder}/${outputFilename}`,
-    dimensions: { width: 0, height: 0 },
-    fileSize: stats.size,
-    imageType: ext,
-  };
+  const local = await saveLocally(buffer, folder, name, ext);
+  return { ...local, dimensions: { width: 0, height: 0 } };
 }
 
 export async function deleteImage(imageUrl: string) {
@@ -136,13 +146,5 @@ export async function deleteImage(imageUrl: string) {
     await fs.unlink(thumbPath).catch(() => {});
   } catch {
     // file not found
-  }
-}
-
-export async function ensureDir(dir: string) {
-  try {
-    await fs.mkdir(dir, { recursive: true });
-  } catch {
-    // directory already exists
   }
 }
