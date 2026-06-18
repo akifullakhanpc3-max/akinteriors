@@ -36,8 +36,8 @@ export default function ImagePicker({ value, onChange, category = 'general', sec
 
   const uploadFile = useCallback(async (file: File) => {
     if (file.size > 5 * 1024 * 1024) { alert('File too large (max 5MB)'); return; }
-    const allowed = ['image/jpeg', 'image/png', 'image/webp', 'image/jpg', 'image/svg+xml'];
-    if (!allowed.includes(file.type)) { alert('Only JPG, PNG, WebP, SVG allowed'); return; }
+    const allowed = ['image/jpeg', 'image/png', 'image/webp', 'image/jpg'];
+    if (!allowed.includes(file.type)) { alert('Only JPG, PNG, WebP allowed'); return; }
 
     setUploading(true);
     try {
@@ -144,7 +144,7 @@ export default function ImagePicker({ value, onChange, category = 'general', sec
         </div>
       )}
 
-      <input ref={fileRef} type="file" accept="image/jpeg,image/png,image/webp,image/svg+xml" className="hidden" onChange={handleFile} />
+      <input ref={fileRef} type="file" accept="image/jpeg,image/png,image/webp" className="hidden" onChange={handleFile} />
 
       {/* Browse Library */}
       <div className="flex gap-2">

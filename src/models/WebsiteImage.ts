@@ -59,7 +59,7 @@ const WebsiteImageSchema = new Schema<IWebsiteImage>(
     },
     imageType: {
       type: String,
-      enum: ['webp', 'png', 'jpg', 'jpeg', 'svg', 'gif'],
+      enum: ['webp', 'png', 'jpg', 'jpeg', 'gif'],
       default: 'webp',
     },
     fileSize: {

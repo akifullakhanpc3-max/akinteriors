@@ -85,9 +85,9 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ success: false, error: 'File is required' }, { status: 400 });
     }
 
-    const allowedTypes = ['image/jpeg', 'image/png', 'image/webp', 'image/jpg', 'image/svg+xml'];
+    const allowedTypes = ['image/jpeg', 'image/png', 'image/webp', 'image/jpg'];
     if (!allowedTypes.includes(file.type)) {
-      return NextResponse.json({ success: false, error: 'Only JPG, PNG, WebP, SVG allowed' }, { status: 400 });
+      return NextResponse.json({ success: false, error: 'Only JPG, PNG, WebP allowed' }, { status: 400 });
     }
     if (file.size > 5 * 1024 * 1024) {
       return NextResponse.json({ success: false, error: 'File too large (max 5MB)' }, { status: 400 });

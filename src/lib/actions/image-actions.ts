@@ -83,8 +83,8 @@ export async function createImage(formData: FormData) {
 
   if (!file || file.size === 0) return { success: false, error: 'File is required' };
 
-  const allowedTypes = ['image/jpeg', 'image/png', 'image/webp', 'image/jpg', 'image/svg+xml'];
-  if (!allowedTypes.includes(file.type)) return { success: false, error: 'Only JPG, PNG, WebP, SVG allowed' };
+  const allowedTypes = ['image/jpeg', 'image/png', 'image/webp', 'image/jpg'];
+  if (!allowedTypes.includes(file.type)) return { success: false, error: 'Only JPG, PNG, WebP allowed' };
 
   if (file.size > 5 * 1024 * 1024) return { success: false, error: 'File too large (max 5MB)' };
 
